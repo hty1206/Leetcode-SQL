@@ -1,9 +1,9 @@
 # Write your MySQL query statement below
-SELECT CASE WHEN COUNT(DISTINCT(salary)) = 1 THEN null ELSE (
-    SELECT salary 
+SELECT CASE WHEN COUNT(*) = 1 THEN null
+ELSE (
+    SELECT DISTINCT(salary)
     FROM Employee
-    GROUP BY salary
     ORDER BY salary DESC
     LIMIT 1 OFFSET 1
-) END AS SecondHighestSalary
+) END  AS SecondHighestSalary 
 FROM Employee
