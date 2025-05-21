@@ -5,4 +5,3 @@ FROM Users U
 LEFT JOIN Orders O
 ON U.user_id = O.buyer_id
 GROUP BY U.user_id
-ORDER BY U.user_id
