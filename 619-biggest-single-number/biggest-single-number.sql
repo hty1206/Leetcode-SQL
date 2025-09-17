@@ -1,9 +1,6 @@
 # Write your MySQL query statement below
-SELECT max(num) AS num
+SELECT CASE WHEN(COUNT(num) = 1) THEN num ELSE null END AS num
 FROM MyNumbers
-WHERE num NOT IN(
-    SELECT num
-    FROM MyNumbers
-    GROUP BY num
-    HAVING COUNT(num) > 1
-)
+GROUP BY num
+ORDER BY num DESC
+LIMIT 1
