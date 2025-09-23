@@ -5,5 +5,5 @@ WHERE primary_flag = 'Y' OR employee_id IN (
     SELECT employee_id
     FROM Employee
     GROUP BY employee_id
-    HAVING COUNT(employee_id) = 1
+    HAVING COUNT(*) = 1 
 )
