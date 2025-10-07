@@ -15,8 +15,11 @@ season_sales AS (
     GROUP BY season, category
 ),
 
-rank_categories AS (SELECT *, ROW_NUMBER() OVER(PARTITION BY season ORDER BY total_quantity DESC, total_revenue DESC) AS RNK
-FROM season_sales)
+rank_categories AS (
+    SELECT *, 
+    ROW_NUMBER() OVER(PARTITION BY season ORDER BY total_quantity DESC, total_revenue DESC) AS RNK
+    FROM season_sales
+)
 
 SELECT season, category, total_quantity, total_revenue
 FROM rank_categories
